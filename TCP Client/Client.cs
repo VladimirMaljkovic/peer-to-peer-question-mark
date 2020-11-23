@@ -19,7 +19,6 @@ namespace TCP_Client
                 // combination.
                 Int32 port = 8081;
                 TcpClient client = new TcpClient(server, port);
-
                 // Translate the passed message into ASCII and store it as a Byte array.
                 Byte[] data = System.Text.Encoding.ASCII.GetBytes(message);
 
@@ -65,7 +64,7 @@ namespace TCP_Client
 
         static void Main(string[] args)
         {
-            Connect("localhost", "test poruka");
+            Connect("192.168.0.19", "test poruka");
         }
     }
 }

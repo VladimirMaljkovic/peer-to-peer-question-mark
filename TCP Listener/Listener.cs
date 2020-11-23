@@ -13,7 +13,7 @@ class MyTcpListener
         {
             // Set the TcpListener on port 13000.
             Int32 port = 8081;
-            IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+            IPAddress localAddr = IPAddress.Parse("192.168.43.120");
 
             // TcpListener server = new TcpListener(port);
             server = new TcpListener(localAddr, port);
