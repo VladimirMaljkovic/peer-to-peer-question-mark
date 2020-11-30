@@ -41,6 +41,7 @@ namespace Main_connecting_form
             this.txtConnectionStatus = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.bttnExit = new System.Windows.Forms.Button();
+            this.bttnScan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblPrivateIP
@@ -99,11 +100,11 @@ namespace Main_connecting_form
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(412, 31);
+            this.label3.Location = new System.Drawing.Point(415, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 13);
+            this.label3.Size = new System.Drawing.Size(88, 26);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Devices on this network:";
+            this.label3.Text = "Other devices on\r\nthis network:";
             // 
             // listBoxAvailableDevices
             // 
@@ -150,11 +151,22 @@ namespace Main_connecting_form
             this.bttnExit.UseVisualStyleBackColor = true;
             this.bttnExit.Click += new System.EventHandler(this.bttnExit_Click);
             // 
+            // bttnScan
+            // 
+            this.bttnScan.Location = new System.Drawing.Point(141, 31);
+            this.bttnScan.Name = "bttnScan";
+            this.bttnScan.Size = new System.Drawing.Size(75, 38);
+            this.bttnScan.TabIndex = 12;
+            this.bttnScan.Text = "Scan network";
+            this.bttnScan.UseVisualStyleBackColor = true;
+            this.bttnScan.Click += new System.EventHandler(this.bttnScan_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 446);
+            this.Controls.Add(this.bttnScan);
             this.Controls.Add(this.bttnExit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtConnectionStatus);
@@ -188,6 +200,7 @@ namespace Main_connecting_form
         private System.Windows.Forms.TextBox txtConnectionStatus;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button bttnExit;
+        private System.Windows.Forms.Button bttnScan;
     }
 }
 

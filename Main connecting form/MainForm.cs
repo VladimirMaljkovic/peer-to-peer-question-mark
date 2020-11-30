@@ -40,8 +40,8 @@ namespace Main_connecting_form
 
 
             //tring to find other devices on the network:
-
-            var nics = NetworkInterface.GetAllNetworkInterfaces();
+            //this code finds global addresses i think?
+            /*var nics = NetworkInterface.GetAllNetworkInterfaces();
             foreach (var nic in nics)
             {
 
@@ -50,9 +50,17 @@ namespace Main_connecting_form
                 var ipv4add = ippropoerties.UnicastAddresses.Where(addr => addr.Address.AddressFamily == AddressFamily.InterNetwork);
                 foreach (var addr in ipv4add)
                 {
+                    if (addr.Address.ToString() == lblPrivateIP.Text)
+                        continue;
                     listBoxAvailableDevices.Items.Add(addr.Address.ToString());
                     
                 }
+            }*/
+
+            //trying to find local addresses here lol
+            foreach (var ip in host.AddressList)
+            {
+                MessageBox.Show(ip.ToString());
             }
 
 
@@ -61,6 +69,15 @@ namespace Main_connecting_form
         private void bttnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //definisem klasu koja sluzi za pingovanje svih uredjaja
+
+
+
+        private void bttnScan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
