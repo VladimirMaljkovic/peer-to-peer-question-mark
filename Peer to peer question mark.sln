@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP Listener", "TCP Listene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication mayhaps", "Communication mayhaps\Communication mayhaps.csproj", "{99AC6021-7522-43F4-945F-C486E47D44C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main connecting form", "Main connecting form\Main connecting form.csproj", "{B642F0AD-7114-4AAD-861A-DB029998BE0E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{99AC6021-7522-43F4-945F-C486E47D44C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99AC6021-7522-43F4-945F-C486E47D44C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99AC6021-7522-43F4-945F-C486E47D44C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B642F0AD-7114-4AAD-861A-DB029998BE0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B642F0AD-7114-4AAD-861A-DB029998BE0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B642F0AD-7114-4AAD-861A-DB029998BE0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B642F0AD-7114-4AAD-861A-DB029998BE0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
