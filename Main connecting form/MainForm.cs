@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Threading;
+using System.Diagnostics;
 
 namespace Main_connecting_form
 {
@@ -22,26 +24,27 @@ namespace Main_connecting_form
 
         private void bttnIdentifyNetwork_Click(object sender, EventArgs e)
         {
-            if(!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            listBoxAvailableDevicesGlobal.Items.Clear();
+            //this finds my local ip
+            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
                 lblPrivateIP.Text = "You're not connected.";
                 return;
             }
+
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
                     lblPrivateIP.Text = ip.ToString();
-                    //return;
                 }
             }
-            //throw new Exception("No network adapters with an IPv4 address in the system!");
 
 
             //tring to find other devices on the network:
             //this code finds global addresses i think?
-            /*var nics = NetworkInterface.GetAllNetworkInterfaces();
+            var nics = NetworkInterface.GetAllNetworkInterfaces();
             foreach (var nic in nics)
             {
 
@@ -52,17 +55,10 @@ namespace Main_connecting_form
                 {
                     if (addr.Address.ToString() == lblPrivateIP.Text)
                         continue;
-                    listBoxAvailableDevices.Items.Add(addr.Address.ToString());
-                    
+                    listBoxAvailableDevicesGlobal.Items.Add(addr.Address.ToString());
+
                 }
-            }*/
-
-            //trying to find local addresses here lol
-            foreach (var ip in host.AddressList)
-            {
-                MessageBox.Show(ip.ToString());
             }
-
 
         }
 
@@ -71,13 +67,11 @@ namespace Main_connecting_form
             this.Close();
         }
 
-        //definisem klasu koja sluzi za pingovanje svih uredjaja
+        //definisem metode za pingovanje svih uredjaja
 
 
+        //ill use scan to try and ping local devices
 
-        private void bttnScan_Click(object sender, EventArgs e)
-        {
-
-        }
     }
+    
 }

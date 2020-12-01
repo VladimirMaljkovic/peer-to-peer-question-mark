@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-class MyTcpListener
+class Listener
 {
     public static void Main()
     {

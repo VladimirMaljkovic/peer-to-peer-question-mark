@@ -36,12 +36,15 @@ namespace Main_connecting_form
             this.rtxtRecieveMessage = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBoxAvailableDevices = new System.Windows.Forms.ListBox();
+            this.listBoxAvailableDevicesGlobal = new System.Windows.Forms.ListBox();
             this.bttnConnectToSelected = new System.Windows.Forms.Button();
             this.txtConnectionStatus = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.bttnExit = new System.Windows.Forms.Button();
             this.bttnScan = new System.Windows.Forms.Button();
+            this.listBoxAvailableDevicesLocal = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblPrivateIP
@@ -104,15 +107,15 @@ namespace Main_connecting_form
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 26);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Other devices on\r\nthis network:";
+            this.label3.Text = "Global IPs found:\r\n(maybe)";
             // 
-            // listBoxAvailableDevices
+            // listBoxAvailableDevicesGlobal
             // 
-            this.listBoxAvailableDevices.FormattingEnabled = true;
-            this.listBoxAvailableDevices.Location = new System.Drawing.Point(415, 62);
-            this.listBoxAvailableDevices.Name = "listBoxAvailableDevices";
-            this.listBoxAvailableDevices.Size = new System.Drawing.Size(128, 186);
-            this.listBoxAvailableDevices.TabIndex = 7;
+            this.listBoxAvailableDevicesGlobal.FormattingEnabled = true;
+            this.listBoxAvailableDevicesGlobal.Location = new System.Drawing.Point(415, 62);
+            this.listBoxAvailableDevicesGlobal.Name = "listBoxAvailableDevicesGlobal";
+            this.listBoxAvailableDevicesGlobal.Size = new System.Drawing.Size(128, 186);
+            this.listBoxAvailableDevicesGlobal.TabIndex = 7;
             // 
             // bttnConnectToSelected
             // 
@@ -159,19 +162,47 @@ namespace Main_connecting_form
             this.bttnScan.TabIndex = 12;
             this.bttnScan.Text = "Scan network";
             this.bttnScan.UseVisualStyleBackColor = true;
-            this.bttnScan.Click += new System.EventHandler(this.bttnScan_Click);
+            // 
+            // listBoxAvailableDevicesLocal
+            // 
+            this.listBoxAvailableDevicesLocal.FormattingEnabled = true;
+            this.listBoxAvailableDevicesLocal.Location = new System.Drawing.Point(554, 62);
+            this.listBoxAvailableDevicesLocal.Name = "listBoxAvailableDevicesLocal";
+            this.listBoxAvailableDevicesLocal.Size = new System.Drawing.Size(128, 186);
+            this.listBoxAvailableDevicesLocal.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(554, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 26);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Local IPs found:\r\n(maybe)";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 76);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(118, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Your private IP (I think):";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 446);
+            this.ClientSize = new System.Drawing.Size(718, 446);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.listBoxAvailableDevicesLocal);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.bttnScan);
             this.Controls.Add(this.bttnExit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtConnectionStatus);
             this.Controls.Add(this.bttnConnectToSelected);
-            this.Controls.Add(this.listBoxAvailableDevices);
+            this.Controls.Add(this.listBoxAvailableDevicesGlobal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rtxtRecieveMessage);
@@ -195,12 +226,15 @@ namespace Main_connecting_form
         private System.Windows.Forms.RichTextBox rtxtRecieveMessage;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBoxAvailableDevices;
+        private System.Windows.Forms.ListBox listBoxAvailableDevicesGlobal;
         private System.Windows.Forms.Button bttnConnectToSelected;
         private System.Windows.Forms.TextBox txtConnectionStatus;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button bttnExit;
         private System.Windows.Forms.Button bttnScan;
+        private System.Windows.Forms.ListBox listBoxAvailableDevicesLocal;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 

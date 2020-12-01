@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Testing_pinger
 {
-    class Program
+    class TestingPinger
     {
         static CountdownEvent countdown;
         static int upCount = 0;
