@@ -64,6 +64,7 @@ namespace TCP_Client
 
         static void Main(string[] args)
         {
+            //ovde ide adresa kompa koji slusa
             Connect("192.168.0.19", "test poruka");
         }
     }
