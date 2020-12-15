@@ -23,16 +23,21 @@ namespace Testing_pinger
             countdown = new CountdownEvent(1);
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            string ipBase = "192.168.0.";
-            for (int i = 1; i < 255; i++)
+            List<string> ipBases = new List<string>
+            { "192.168.1.", "192.168.0." };
+            foreach(string ipBase in ipBases)
             {
-                string ip = ipBase + i.ToString();
+                for (int i = 1; i < 255; i++)
+                {
+                    string ip = ipBase + i.ToString();
 
-                Ping p = new Ping();
-                p.PingCompleted += new PingCompletedEventHandler(p_PingCompleted);
-                countdown.AddCount();
-                p.SendAsync(ip, 100, ip);
+                    Ping p = new Ping();
+                    p.PingCompleted += new PingCompletedEventHandler(p_PingCompleted);
+                    countdown.AddCount();
+                    p.SendAsync(ip, 100, ip);
+                }
             }
+            
             countdown.Signal();
             countdown.Wait();
             sw.Stop();
