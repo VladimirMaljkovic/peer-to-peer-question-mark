@@ -30,13 +30,10 @@ namespace Main_connecting_form
         private void InitializeComponent()
         {
             this.lblPrivateIP = new System.Windows.Forms.Label();
-            this.bttnIdentifyNetwork = new System.Windows.Forms.Button();
             this.rtxtSendMessage = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rtxtRecieveMessage = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.listBoxAvailableDevicesGlobal = new System.Windows.Forms.ListBox();
             this.bttnConnectToSelected = new System.Windows.Forms.Button();
             this.txtConnectionStatus = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,16 +52,6 @@ namespace Main_connecting_form
             this.lblPrivateIP.Size = new System.Drawing.Size(50, 13);
             this.lblPrivateIP.TabIndex = 0;
             this.lblPrivateIP.Text = "private ip";
-            // 
-            // bttnIdentifyNetwork
-            // 
-            this.bttnIdentifyNetwork.Location = new System.Drawing.Point(25, 31);
-            this.bttnIdentifyNetwork.Name = "bttnIdentifyNetwork";
-            this.bttnIdentifyNetwork.Size = new System.Drawing.Size(76, 38);
-            this.bttnIdentifyNetwork.TabIndex = 1;
-            this.bttnIdentifyNetwork.Text = "Identify network";
-            this.bttnIdentifyNetwork.UseVisualStyleBackColor = true;
-            this.bttnIdentifyNetwork.Click += new System.EventHandler(this.bttnIdentifyNetwork_Click);
             // 
             // rtxtSendMessage
             // 
@@ -99,23 +86,6 @@ namespace Main_connecting_form
             this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Recieved message:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(415, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 26);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Global IPs found:\r\n(maybe)";
-            // 
-            // listBoxAvailableDevicesGlobal
-            // 
-            this.listBoxAvailableDevicesGlobal.FormattingEnabled = true;
-            this.listBoxAvailableDevicesGlobal.Location = new System.Drawing.Point(415, 62);
-            this.listBoxAvailableDevicesGlobal.Name = "listBoxAvailableDevicesGlobal";
-            this.listBoxAvailableDevicesGlobal.Size = new System.Drawing.Size(128, 186);
-            this.listBoxAvailableDevicesGlobal.TabIndex = 7;
             // 
             // bttnConnectToSelected
             // 
@@ -156,7 +126,7 @@ namespace Main_connecting_form
             // 
             // bttnScan
             // 
-            this.bttnScan.Location = new System.Drawing.Point(141, 31);
+            this.bttnScan.Location = new System.Drawing.Point(28, 31);
             this.bttnScan.Name = "bttnScan";
             this.bttnScan.Size = new System.Drawing.Size(75, 38);
             this.bttnScan.TabIndex = 12;
@@ -167,7 +137,7 @@ namespace Main_connecting_form
             // listBoxAvailableDevicesLocal
             // 
             this.listBoxAvailableDevicesLocal.FormattingEnabled = true;
-            this.listBoxAvailableDevicesLocal.Location = new System.Drawing.Point(554, 62);
+            this.listBoxAvailableDevicesLocal.Location = new System.Drawing.Point(415, 63);
             this.listBoxAvailableDevicesLocal.Name = "listBoxAvailableDevicesLocal";
             this.listBoxAvailableDevicesLocal.Size = new System.Drawing.Size(128, 186);
             this.listBoxAvailableDevicesLocal.TabIndex = 14;
@@ -175,7 +145,7 @@ namespace Main_connecting_form
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(554, 31);
+            this.label5.Location = new System.Drawing.Point(415, 31);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 26);
             this.label5.TabIndex = 13;
@@ -194,7 +164,7 @@ namespace Main_connecting_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 446);
+            this.ClientSize = new System.Drawing.Size(564, 444);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBoxAvailableDevicesLocal);
             this.Controls.Add(this.label5);
@@ -203,13 +173,10 @@ namespace Main_connecting_form
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtConnectionStatus);
             this.Controls.Add(this.bttnConnectToSelected);
-            this.Controls.Add(this.listBoxAvailableDevicesGlobal);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rtxtRecieveMessage);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rtxtSendMessage);
-            this.Controls.Add(this.bttnIdentifyNetwork);
             this.Controls.Add(this.lblPrivateIP);
             this.Name = "MainForm";
             this.Text = "Shittin ass chat";
@@ -221,13 +188,10 @@ namespace Main_connecting_form
         #endregion
 
         private System.Windows.Forms.Label lblPrivateIP;
-        private System.Windows.Forms.Button bttnIdentifyNetwork;
         private System.Windows.Forms.RichTextBox rtxtSendMessage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtxtRecieveMessage;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBoxAvailableDevicesGlobal;
         private System.Windows.Forms.Button bttnConnectToSelected;
         private System.Windows.Forms.TextBox txtConnectionStatus;
         private System.Windows.Forms.Label label4;

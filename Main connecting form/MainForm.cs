@@ -22,9 +22,21 @@ namespace Main_connecting_form
             InitializeComponent();
         }
 
-        private void bttnIdentifyNetwork_Click(object sender, EventArgs e)
+        
+
+        private void bttnExit_Click(object sender, EventArgs e)
         {
-            listBoxAvailableDevicesGlobal.Items.Clear();
+            this.Close();
+        }
+
+        
+        public List<string> foundIpAddresses = new List<string>();
+        private async void bttnScan_Click(object sender, EventArgs e)
+        {
+            foundIpAddresses.Clear();
+            listBoxAvailableDevicesLocal.Items.Clear();
+
+
             //this finds my local ip
             if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
@@ -42,36 +54,7 @@ namespace Main_connecting_form
             }
 
 
-            //tring to find other devices on the network:
-            //this code finds global addresses i think?
-            var nics = NetworkInterface.GetAllNetworkInterfaces();
-            foreach (var nic in nics)
-            {
 
-                var ippropoerties = nic.GetIPProperties();
-                //we are only interested in IPv4 address
-                var ipv4add = ippropoerties.UnicastAddresses.Where(addr => addr.Address.AddressFamily == AddressFamily.InterNetwork);
-                foreach (var addr in ipv4add)
-                {
-                    if (addr.Address.ToString() == lblPrivateIP.Text)
-                        continue;
-                    listBoxAvailableDevicesGlobal.Items.Add(addr.Address.ToString());
-
-                }
-            }
-
-        }
-
-        private void bttnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-
-        public List<string> foundIpAddresses = new List<string>();
-        private async void bttnScan_Click(object sender, EventArgs e)
-        {
-            listBoxAvailableDevicesLocal.Items.Clear();
 
             Pinger2 pinger = new Pinger2();
             await Task.Run(() => pinger.go(foundIpAddresses));
