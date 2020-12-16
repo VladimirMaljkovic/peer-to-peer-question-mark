@@ -162,6 +162,7 @@ namespace Main_connecting_form
             this.bttnScan.TabIndex = 12;
             this.bttnScan.Text = "Scan network";
             this.bttnScan.UseVisualStyleBackColor = true;
+            this.bttnScan.Click += new System.EventHandler(this.bttnScan_Click);
             // 
             // listBoxAvailableDevicesLocal
             // 

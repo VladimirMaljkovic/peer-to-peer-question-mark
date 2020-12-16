@@ -9,23 +9,25 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Testing_pinger
+namespace Pinger2
 {
-    class TestingPinger
+    public class Pinger2
     {
+
         static CountdownEvent countdown;
         static int upCount = 0;
         static object lockObj = new object();
-        const bool resolveNames = true;
+        bool resolveNames = true;
+        public static List<string> foundIps = new List<string>();
 
-        static void Main(string[] args)
+        public void go()
         {
             countdown = new CountdownEvent(1);
             Stopwatch sw = new Stopwatch();
             sw.Start();
             List<string> ipBases = new List<string>
             { "192.168.1.", "192.168.0." };
-            foreach(string ipBase in ipBases)
+            foreach (string ipBase in ipBases)
             {
                 for (int i = 1; i < 255; i++)
                 {
@@ -37,7 +39,7 @@ namespace Testing_pinger
                     p.SendAsync(ip, 250, ip);
                 }
             }
-            
+
             countdown.Signal();
             countdown.Wait();
             sw.Stop();
@@ -46,11 +48,12 @@ namespace Testing_pinger
             Console.ReadLine();
         }
 
-        static void p_PingCompleted(object sender, PingCompletedEventArgs e)
+        private void p_PingCompleted(object sender, PingCompletedEventArgs e)
         {
-            string ip = (string)e.UserState;
+            /*string ip = (string)e.UserState;
             if (e.Reply != null && e.Reply.Status == IPStatus.Success)
             {
+                foundIps.Add(ip);
                 if (resolveNames)
                 {
                     string name;
@@ -78,7 +81,17 @@ namespace Testing_pinger
             {
                 Console.WriteLine("Pinging {0} failed. (Null Reply object?)", ip);
             }
-            countdown.Signal();
+            countdown.Signal();*/
+            Console.WriteLine("peepee {0}", (string)e.UserState);
+        }
+    }
+
+    class Mainn
+    {
+        static void Main()
+        {
+            Pinger2 pinger = new Pinger2();
+            pinger.go();
         }
     }
 }

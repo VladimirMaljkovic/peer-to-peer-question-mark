@@ -67,6 +67,44 @@ namespace Main_connecting_form
             this.Close();
         }
 
+        private void bttnScan_Click(object sender, EventArgs e)
+        {
+            List<string> ipBases = new List<string>
+            { "192.168.0.", "192.168.1." };
+            foreach (string ipBase in ipBases)
+            {
+                for (int i = 1; i < 255; i++)
+                {
+
+                    string ip = ipBase + i.ToString();
+
+                    Console.WriteLine("scanning address {0}", ip);
+
+
+                    Ping p = new Ping();
+                    /*PingReply rep = p.Send(ip, 100);
+                    if(rep.Status == IPStatus.Success)
+                    {
+                        Console.WriteLine("success with {0}", ip);
+                        listBoxAvailableDevicesLocal.Items.Add(ip);
+                    }*/
+                    p.PingCompleted += new PingCompletedEventHandler(p_PingCompleted);
+                    p.SendAsync(ip, 250, ip);
+
+                }
+            }
+        }
+
+        private void p_PingCompleted(object sender, PingCompletedEventArgs e)
+        {
+            Console.WriteLine("peepee poo poo {0}", (string)e.UserState);
+            if(e.Reply != null && e.Reply.Status == IPStatus.Success)
+            {
+                Console.WriteLine("found one -> {0}", (string)e.UserState);
+                listBoxAvailableDevicesLocal.Items.Add((string)e.UserState);
+            }
+        }
+
         //definisem metode za pingovanje svih uredjaja
 
 
