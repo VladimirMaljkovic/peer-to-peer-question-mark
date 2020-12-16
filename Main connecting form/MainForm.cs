@@ -67,49 +67,84 @@ namespace Main_connecting_form
             this.Close();
         }
 
-        private void bttnScan_Click(object sender, EventArgs e)
+
+        public List<string> foundIpAddresses = new List<string>();
+        private async void bttnScan_Click(object sender, EventArgs e)
         {
+            listBoxAvailableDevicesLocal.Items.Clear();
+
+            Pinger2 pinger = new Pinger2();
+            await Task.Run(() => pinger.go(foundIpAddresses));
+            
+
+            foreach(string ip in foundIpAddresses)
+            {
+                Console.WriteLine("sad u formi je prosledjeno --> {0}", ip);
+                listBoxAvailableDevicesLocal.Items.Add(ip);
+            }
+        }
+
+    }
+
+
+    public class Pinger2
+    {
+        static CountdownEvent countdown;
+        static int upCount = 0;
+        static object lockObj = new object();
+        public List<string> foundIps = new List<string>();
+
+        public void go(List<string> foundIpAddresses)
+        {
+            foundIps.Clear();
+            countdown = new CountdownEvent(1);
             List<string> ipBases = new List<string>
-            { "192.168.0.", "192.168.1." };
+            { "192.168.1.", "192.168.0." };
             foreach (string ipBase in ipBases)
             {
                 for (int i = 1; i < 255; i++)
                 {
-
                     string ip = ipBase + i.ToString();
 
-                    Console.WriteLine("scanning address {0}", ip);
-
-
                     Ping p = new Ping();
-                    /*PingReply rep = p.Send(ip, 100);
-                    if(rep.Status == IPStatus.Success)
-                    {
-                        Console.WriteLine("success with {0}", ip);
-                        listBoxAvailableDevicesLocal.Items.Add(ip);
-                    }*/
                     p.PingCompleted += new PingCompletedEventHandler(p_PingCompleted);
+                    countdown.AddCount();
                     p.SendAsync(ip, 250, ip);
-
+                    //Console.WriteLine("sent ping {0}, signal je na {1}", ip, countdown.CurrentCount);
                 }
+            }
+
+            countdown.Signal();
+            Console.WriteLine("sad je izmedju signal i wait");
+            countdown.Wait();
+            Console.WriteLine("zavrsio se wait");
+            Console.WriteLine("{0} hosts active.", upCount);
+            
+            foreach(string ip in foundIps)
+            {
+                Console.WriteLine("Jedna od nadjenih: {0}", ip);
+                foundIpAddresses.Add(ip);
             }
         }
 
         private void p_PingCompleted(object sender, PingCompletedEventArgs e)
         {
-            Console.WriteLine("peepee poo poo {0}", (string)e.UserState);
-            if(e.Reply != null && e.Reply.Status == IPStatus.Success)
+            string ip = (string)e.UserState;
+            Console.WriteLine("scanning {0}", ip);
+
+            if (e.Reply != null && e.Reply.Status == IPStatus.Success)
             {
-                Console.WriteLine("found one -> {0}", (string)e.UserState);
-                listBoxAvailableDevicesLocal.Items.Add((string)e.UserState);
+                Console.WriteLine("found one --> {0}", ip);
+                
+                lock (lockObj)
+                {
+                    upCount++;
+                    foundIps.Add(ip);
+                }
+
             }
+            countdown.Signal();
         }
-
-        //definisem metode za pingovanje svih uredjaja
-
-
-        //ill use scan to try and ping local devices
-
     }
-    
+
 }

@@ -23,8 +23,6 @@ namespace Pinger2
         public void go()
         {
             countdown = new CountdownEvent(1);
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
             List<string> ipBases = new List<string>
             { "192.168.1.", "192.168.0." };
             foreach (string ipBase in ipBases)
@@ -37,52 +35,35 @@ namespace Pinger2
                     p.PingCompleted += new PingCompletedEventHandler(p_PingCompleted);
                     countdown.AddCount();
                     p.SendAsync(ip, 250, ip);
+                    Console.WriteLine("sent ping {0}, signal je na {1}", ip, countdown.CurrentCount);
                 }
             }
 
             countdown.Signal();
+            Console.WriteLine("sad je izmedju signal i wait");
             countdown.Wait();
-            sw.Stop();
-            TimeSpan span = new TimeSpan(sw.ElapsedTicks);
-            Console.WriteLine("Took {0} milliseconds. {1} hosts active.", sw.ElapsedMilliseconds, upCount);
+            Console.WriteLine("zavrsio se wait");
+            Console.WriteLine("{0} hosts active.", upCount);
             Console.ReadLine();
         }
 
         private void p_PingCompleted(object sender, PingCompletedEventArgs e)
         {
-            /*string ip = (string)e.UserState;
-            if (e.Reply != null && e.Reply.Status == IPStatus.Success)
+            string ip = (string)e.UserState;
+            Console.WriteLine("scanning {0}", ip);
+
+            if(e.Reply != null && e.Reply.Status == IPStatus.Success)
             {
-                foundIps.Add(ip);
-                if (resolveNames)
-                {
-                    string name;
-                    try
-                    {
-                        IPHostEntry hostEntry = Dns.GetHostEntry(ip);
-                        name = hostEntry.HostName;
-                    }
-                    catch (SocketException ex)
-                    {
-                        name = "?";
-                    }
-                    Console.WriteLine("{0} ({1}) is up: ({2} ms)", ip, name, e.Reply.RoundtripTime);
-                }
-                else
-                {
-                    Console.WriteLine("{0} is up: ({1} ms)", ip, e.Reply.RoundtripTime);
-                }
+                Console.WriteLine("found one --> {0}", ip);
                 lock (lockObj)
                 {
                     upCount++;
                 }
+                
             }
-            else if (e.Reply == null)
-            {
-                Console.WriteLine("Pinging {0} failed. (Null Reply object?)", ip);
-            }
-            countdown.Signal();*/
-            Console.WriteLine("peepee {0}", (string)e.UserState);
+            countdown.Signal();
+
+            Console.WriteLine("signal je spusten na {0}", countdown.CurrentCount);
         }
     }
 
