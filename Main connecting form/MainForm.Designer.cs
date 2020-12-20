@@ -42,12 +42,13 @@ namespace Main_connecting_form
             this.listBoxAvailableDevicesLocal = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.bttnWaitForConnection = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblPrivateIP
             // 
             this.lblPrivateIP.AutoSize = true;
-            this.lblPrivateIP.Location = new System.Drawing.Point(25, 97);
+            this.lblPrivateIP.Location = new System.Drawing.Point(12, 91);
             this.lblPrivateIP.Name = "lblPrivateIP";
             this.lblPrivateIP.Size = new System.Drawing.Size(50, 13);
             this.lblPrivateIP.TabIndex = 0;
@@ -55,7 +56,7 @@ namespace Main_connecting_form
             // 
             // rtxtSendMessage
             // 
-            this.rtxtSendMessage.Location = new System.Drawing.Point(25, 215);
+            this.rtxtSendMessage.Location = new System.Drawing.Point(12, 204);
             this.rtxtSendMessage.Name = "rtxtSendMessage";
             this.rtxtSendMessage.Size = new System.Drawing.Size(348, 96);
             this.rtxtSendMessage.TabIndex = 2;
@@ -64,7 +65,7 @@ namespace Main_connecting_form
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 183);
+            this.label1.Location = new System.Drawing.Point(12, 183);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 3;
@@ -72,7 +73,7 @@ namespace Main_connecting_form
             // 
             // rtxtRecieveMessage
             // 
-            this.rtxtRecieveMessage.Location = new System.Drawing.Point(28, 342);
+            this.rtxtRecieveMessage.Location = new System.Drawing.Point(12, 338);
             this.rtxtRecieveMessage.Name = "rtxtRecieveMessage";
             this.rtxtRecieveMessage.Size = new System.Drawing.Size(348, 96);
             this.rtxtRecieveMessage.TabIndex = 4;
@@ -81,7 +82,7 @@ namespace Main_connecting_form
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 324);
+            this.label2.Location = new System.Drawing.Point(12, 312);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 5;
@@ -89,7 +90,7 @@ namespace Main_connecting_form
             // 
             // bttnConnectToSelected
             // 
-            this.bttnConnectToSelected.Location = new System.Drawing.Point(415, 255);
+            this.bttnConnectToSelected.Location = new System.Drawing.Point(379, 41);
             this.bttnConnectToSelected.Name = "bttnConnectToSelected";
             this.bttnConnectToSelected.Size = new System.Drawing.Size(128, 45);
             this.bttnConnectToSelected.TabIndex = 8;
@@ -100,7 +101,7 @@ namespace Main_connecting_form
             // 
             this.txtConnectionStatus.BackColor = System.Drawing.Color.Red;
             this.txtConnectionStatus.Enabled = false;
-            this.txtConnectionStatus.Location = new System.Drawing.Point(415, 324);
+            this.txtConnectionStatus.Location = new System.Drawing.Point(379, 147);
             this.txtConnectionStatus.Name = "txtConnectionStatus";
             this.txtConnectionStatus.Size = new System.Drawing.Size(128, 20);
             this.txtConnectionStatus.TabIndex = 9;
@@ -108,7 +109,7 @@ namespace Main_connecting_form
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(415, 305);
+            this.label4.Location = new System.Drawing.Point(397, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 10;
@@ -126,7 +127,7 @@ namespace Main_connecting_form
             // 
             // bttnScan
             // 
-            this.bttnScan.Location = new System.Drawing.Point(28, 31);
+            this.bttnScan.Location = new System.Drawing.Point(12, 12);
             this.bttnScan.Name = "bttnScan";
             this.bttnScan.Size = new System.Drawing.Size(75, 38);
             this.bttnScan.TabIndex = 12;
@@ -137,15 +138,15 @@ namespace Main_connecting_form
             // listBoxAvailableDevicesLocal
             // 
             this.listBoxAvailableDevicesLocal.FormattingEnabled = true;
-            this.listBoxAvailableDevicesLocal.Location = new System.Drawing.Point(415, 63);
+            this.listBoxAvailableDevicesLocal.Location = new System.Drawing.Point(232, 41);
             this.listBoxAvailableDevicesLocal.Name = "listBoxAvailableDevicesLocal";
-            this.listBoxAvailableDevicesLocal.Size = new System.Drawing.Size(128, 186);
+            this.listBoxAvailableDevicesLocal.Size = new System.Drawing.Size(128, 147);
             this.listBoxAvailableDevicesLocal.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(415, 31);
+            this.label5.Location = new System.Drawing.Point(229, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 26);
             this.label5.TabIndex = 13;
@@ -154,17 +155,28 @@ namespace Main_connecting_form
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 76);
+            this.label6.Location = new System.Drawing.Point(9, 63);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 13);
             this.label6.TabIndex = 15;
             this.label6.Text = "Your private IP (I think):";
+            // 
+            // bttnWaitForConnection
+            // 
+            this.bttnWaitForConnection.Location = new System.Drawing.Point(379, 204);
+            this.bttnWaitForConnection.Name = "bttnWaitForConnection";
+            this.bttnWaitForConnection.Size = new System.Drawing.Size(128, 42);
+            this.bttnWaitForConnection.TabIndex = 16;
+            this.bttnWaitForConnection.Text = "Wait for connection";
+            this.bttnWaitForConnection.UseVisualStyleBackColor = true;
+            this.bttnWaitForConnection.Click += new System.EventHandler(this.bttnWaitForConnection_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 444);
+            this.Controls.Add(this.bttnWaitForConnection);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBoxAvailableDevicesLocal);
             this.Controls.Add(this.label5);
@@ -200,6 +212,7 @@ namespace Main_connecting_form
         private System.Windows.Forms.ListBox listBoxAvailableDevicesLocal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button bttnWaitForConnection;
     }
 }
 

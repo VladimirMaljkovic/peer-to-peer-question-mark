@@ -20,6 +20,7 @@ namespace Main_connecting_form
         public MainForm()
         {
             InitializeComponent();
+   
         }
 
         
@@ -65,8 +66,14 @@ namespace Main_connecting_form
                 Console.WriteLine("sad u formi je prosledjeno --> {0}", ip);
                 listBoxAvailableDevicesLocal.Items.Add(ip);
             }
+
+            listBoxAvailableDevicesLocal.Items.Remove(lblPrivateIP.Text);
         }
 
+        private void bttnWaitForConnection_Click(object sender, EventArgs e)
+        {
+            txtConnectionStatus.BackColor = Color.Orange;
+        }
     }
 
 
