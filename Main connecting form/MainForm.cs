@@ -74,6 +74,16 @@ namespace Main_connecting_form
         {
             txtConnectionStatus.BackColor = Color.Orange;
         }
+
+        private void bttnConnectToSelected_Click(object sender, EventArgs e)
+        {
+            string ipBad = listBoxAvailableDevicesLocal.SelectedItem.ToString();
+            string[] tokens = ipBad.Split('\t');
+            string ip = tokens[0];
+            //MessageBox.Show(ip);
+
+
+        }
     }
 
 
@@ -124,12 +134,36 @@ namespace Main_connecting_form
 
             if (e.Reply != null && e.Reply.Status == IPStatus.Success)
             {
+                /*
+                  string name;
+                    try
+                    {
+                        IPHostEntry hostEntry = Dns.GetHostEntry(ip);
+                        name = hostEntry.HostName;
+                    }
+                    catch (SocketException ex)
+                    {
+                        name = "?";
+                    }
+                    Console.WriteLine("{0} ({1}) is up: ({2} ms)", ip, name, e.Reply.RoundtripTime);
+                 */
+                string name;
+                try
+                {
+                    IPHostEntry hostEntry = Dns.GetHostEntry(ip);
+                    name = hostEntry.HostName;
+                }
+                catch (SocketException ex)
+                {
+
+                    name = "name unknown";
+                }
                 Console.WriteLine("found one --> {0}", ip);
-                
+                string nameForListbox = "" + ip + "\t(" + name + ")";
                 lock (lockObj)
                 {
                     upCount++;
-                    foundIps.Add(ip);
+                    foundIps.Add(nameForListbox);
                 }
 
             }

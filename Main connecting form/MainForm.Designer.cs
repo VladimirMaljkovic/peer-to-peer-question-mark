@@ -96,6 +96,7 @@ namespace Main_connecting_form
             this.bttnConnectToSelected.TabIndex = 8;
             this.bttnConnectToSelected.Text = "Connect to chosen device";
             this.bttnConnectToSelected.UseVisualStyleBackColor = true;
+            this.bttnConnectToSelected.Click += new System.EventHandler(this.bttnConnectToSelected_Click);
             // 
             // txtConnectionStatus
             // 
@@ -138,15 +139,15 @@ namespace Main_connecting_form
             // listBoxAvailableDevicesLocal
             // 
             this.listBoxAvailableDevicesLocal.FormattingEnabled = true;
-            this.listBoxAvailableDevicesLocal.Location = new System.Drawing.Point(232, 41);
+            this.listBoxAvailableDevicesLocal.Location = new System.Drawing.Point(147, 41);
             this.listBoxAvailableDevicesLocal.Name = "listBoxAvailableDevicesLocal";
-            this.listBoxAvailableDevicesLocal.Size = new System.Drawing.Size(128, 147);
+            this.listBoxAvailableDevicesLocal.Size = new System.Drawing.Size(213, 147);
             this.listBoxAvailableDevicesLocal.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(229, 9);
+            this.label5.Location = new System.Drawing.Point(174, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 26);
             this.label5.TabIndex = 13;
