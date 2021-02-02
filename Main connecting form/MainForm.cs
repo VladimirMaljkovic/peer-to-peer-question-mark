@@ -156,7 +156,7 @@ namespace Main_connecting_form
                 catch (SocketException ex)
                 {
 
-                    name = "name unknown";
+                    name = "name unknown\nException: " + ex;
                 }
                 Console.WriteLine("found one --> {0}", ip);
                 string nameForListbox = "" + ip + "\t(" + name + ")";
